@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=da476_task2
+comment1.params=
+comment1.target=da476_task2()
+comment2.params=character
+comment2.target=boolean\ isBlank(int)
+comment3.params=input_file
+comment3.target=int\ getNextInteger(java.io.FileInputStream)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5

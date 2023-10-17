@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=da476_task1
+comment1.params=
+comment1.target=da476_task1()
+comment2.params=n\ towerN\ source_tower\ destination_tower
+comment2.target=int\ move(int,\ int,\ int,\ int)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

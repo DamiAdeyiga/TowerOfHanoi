@@ -1,0 +1,179 @@
+import java.util.Scanner;  // Import the Scanner class
+
+public class tower_of_hanoi_four {
+
+    // ---------------------------------------------------------------------
+    // Function: Empty Constructor
+    // ---------------------------------------------------------------------
+    public tower_of_hanoi_four ()
+    {
+    }
+
+    // ---------------------------------------------------------------------
+    // Function: The recursive function for tower_of_hanoi_four
+    // Computes: Prints all the moves with disk numbers
+    // ---------------------------------------------------------------------
+    //prints out the discs number, amount of towers,source tower and destination tower
+    public int move (int n,int towerN, int source_tower, int destination_tower)
+    {
+        //prints out the discs number, amount of towers,source tower and destination tower
+
+        int buffer_tower1, buffer_tower2;
+
+        // The terminating condition when n == 1
+        if (n == 1)
+        {
+            System.out.printf("\nMove disk %d from T%d to T%d\n", n, source_tower, destination_tower);
+            return 0;
+        }
+
+        // The terminating condition when n == 2
+        if (n == 2)
+        {
+            buffer_tower1 = 0;
+            if (source_tower == 1)
+                if (destination_tower == 2)
+                    buffer_tower1 = 3;
+                else
+                    buffer_tower1 = 2;
+            else if (source_tower == 2)
+                if (destination_tower == 3)
+                    buffer_tower1 = 1;
+                else
+                    buffer_tower1 = 3;
+            else if (source_tower == 3)
+                if (destination_tower == 1)
+                    buffer_tower1 = 2;
+                else
+                    buffer_tower1 = 1;
+
+            // First move the smaller disk to the buffer tower
+            System.out.printf("\nMove disk %d from T%d to T%d\n", n-1, source_tower, buffer_tower1);
+            // Then move the larger disk to the destination tower
+            System.out.printf("\nMove disk %d from T%d to T%d\n", n, source_tower, destination_tower);
+            // Finally move move the smaller disk back from the buffer tower to the destination tower
+            System.out.printf("\nMove disk %d from T%d to T%d\n", n-1, buffer_tower1, destination_tower);
+
+            return 0;
+        }       
+
+        if (n>=3){
+
+        }
+        // The buffer tower number has to be determined appropriately
+        // based on the source and destination towers
+        buffer_tower1 = 0;
+        buffer_tower2 = 0;
+        if (source_tower == 1)
+            if (destination_tower == 2)
+            {
+                buffer_tower1 = 3;
+                buffer_tower2 = 4;
+            }
+            else if (destination_tower == 3)
+            {
+                buffer_tower1 = 2;
+                buffer_tower2 = 4;
+            }
+            else if (destination_tower == 4)
+            {
+                buffer_tower1 = 2;
+                buffer_tower2 = 3;
+            }
+            else if (source_tower == 2)
+                if (destination_tower == 1)
+                {
+                    buffer_tower1 = 3;
+                    buffer_tower2 = 4;
+                }
+                else if (destination_tower == 3)
+                {
+                    buffer_tower1 = 1;
+                    buffer_tower2 = 4;
+                }
+                else if (destination_tower == 4)
+                {
+                    buffer_tower1 = 1;
+                    buffer_tower2 = 3;
+                }
+                else if (source_tower == 3)
+                    if (destination_tower == 1)
+                    {
+                        buffer_tower1 = 2;
+                        buffer_tower2 = 4;
+                    }
+                    else if (destination_tower == 2)
+                    {
+                        buffer_tower1 = 1;
+                        buffer_tower2 = 4;
+                    }
+                    else if (destination_tower == 4)
+                    {
+                        buffer_tower1 = 1;
+                        buffer_tower2 = 2;
+                    }
+                    else if (source_tower == 4)
+                        if (destination_tower == 1)
+                        {
+                            buffer_tower1 = 2;
+                            buffer_tower2 = 3;
+                        }
+                        else if (destination_tower == 2)
+                        {
+                            buffer_tower1 = 1;
+                            buffer_tower2 = 3;
+                        }
+                        else if (destination_tower == 3)
+                        {
+                            buffer_tower1 = 1;
+                            buffer_tower2 = 2;
+                        }
+
+        // The first recursive call to move the top n-2 disks from the source tower to the first buffer tower
+        move (n-2,towerN, source_tower, buffer_tower1);
+
+        // The (n-1)th disk is now ready to be moved to the second buffer tower
+        System.out.printf("\nMove disk %d from T%d to T%d\n", n-1, source_tower, buffer_tower2);
+
+        // The nth disk is now ready to be moved to the destination tower
+        System.out.printf("\nMove disk %d from T%d to T%d\n", n, source_tower, destination_tower);
+
+        // The (n-1)th disk is now ready to be moved from the second buffer tower to the destination tower
+        System.out.printf("\nMove disk %d from T%d to T%d\n", n-1, buffer_tower2, destination_tower);
+
+        // The second recursive call to move the n-2 disks from the first buffer tower to the destination tower
+        move (n-2,towerN, buffer_tower1, destination_tower);
+
+        return 0;
+    }
+
+    // ---------------------------------------------------------------------
+    // Function: main
+    // ---------------------------------------------------------------------
+    public static void main(String[] args) {
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        int n, i, j,k;
+
+        System.out.printf("Please enter the number of disks n: ");
+        n = myObj.nextInt();  // Read user input n
+        System.out.printf("Please enter the number of the first tower i: ");
+        i = myObj.nextInt();  // Read user input i
+        
+        System.out.printf("Please enter the number of the Towers used j: ");
+        j = myObj.nextInt();
+        
+        
+        System.out.printf("Please enter the number of the second tower k: ");
+        k = myObj.nextInt();  // Read user input j
+
+        tower_of_hanoi_four ToH = new tower_of_hanoi_four();
+
+        ToH.move(n, i, j,k);
+
+        return;
+    }
+    //creates buffer towers 
+    // public int bufferCreate(int x){
+        // if(towerN==x){}
+    // }
+}
